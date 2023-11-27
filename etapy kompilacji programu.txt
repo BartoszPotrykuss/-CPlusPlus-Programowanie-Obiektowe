@@ -1,0 +1,30 @@
+1. Procesowi kompilacji poddawany jest każdy plik źródłowy z osobna,
+dopiero pod koniec całego procesu pliki są łączone ze sobą.
+2. Pierwszym etapem tworzenia procesu kompilacji jest pre-procesing, w tym momencie
+zostają dołączone wszystkie wymagane przez plik źródłowy nagłówki, a to oznacza, że
+instrukcje #include zastępowane są zawartościami plików do których nawiązują.
+Dodatkowo w tym kroku odbywa się rozwiązywanie makr znajdujących się wewnątrz
+plików źródłowych (#define). Makra dają możliwość zarządzania procesem kompilacji
+w zaleźności od środowiska, dodatkowe informacje debugujące oraz upraszczają
+bardziej skomplikowane fragmenty kodu bez dodatkowego kosztu wydajnościowego.
+Błędy związane z typowaniem nie są tutaj wykrywane.
+3. Kod przygotowany przez pre-procesor trafia do kompilatora czyli programu,
+który uruchamia pierwszy z trzech procesów:
+- front-end - sprawdza pod kątem poprawności składniowej oraz semantycznej, 
+sna tym poziomie generowane są błędy związane z niepoprawną składnią oraz
+sprawdzany jest kod pod względem semantyki, czyli czy instrukcje w kodzie mają sens
+Analiza semantyczna polega na sprawdzeniu: zgodności typów zwracanych przez funkcje, 
+poprawności typów użytkownika, sensowności rzutowania (konwersji zawężającej), zgodności
+wyrażen z interfejsami klas.
+Kiedy front-end nie znajdzie błędu przechodzi do następnego procesu
+- middle-end (optymalizacja) - sprawdzany jest czas wykonywania operacji, zużycie pamięci
+oraz wielkość pliku wynikowego
+- przełożenie kodu reprezentacja wewnętrznej na kod assemblera, który jest zrozumiały dla procesora
+Przedostanim krokiem procesu kompilacji jest przełożenie kodu assemblera na kod 
+maszynowy, zrozumiały dla systemu operacyjnego. Na jego podstawie generowane są pliku
+obiektowe, będące wyjście dla jednostek operacji.
+4. Linkowanie - na tym etapie wszystkie pliki są łączone w jeden plik wykonywalny.
+Jeżeli choć jeden użyty w kodzie symbol, nie zostanie znaleziony w pozostałych 
+jednostkach kompilacji zostanie to zgłoszone jako błąd linkera. W tym miejscu 
+podejmowane są kolejne optymalizacja. Jeżeli wszystko poszło zgodnie z planem
+generowany jest plik wynikowy.

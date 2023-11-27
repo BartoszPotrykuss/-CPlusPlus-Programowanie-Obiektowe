@@ -1,0 +1,12 @@
+Napisz program pozwalajcy obliczyć pole i obwód prostokta. 
+Dlugosci bokow maja zostac wprowadzone z klawiatury a wyniki
+wyswietlonne na ekranie. Wykorzystaj wskaznikow z dynamiczna
+alokacja pamieci.
+
+Napisz program pozwalajacy zapamietac dane samochodu osobowego
+tj. marke, model, data produkcji, cene, i nr rejestracyjny. 
+Zapewnij mozliwosc wprowadzania danych z klawiatury.
+Dane wyswietl na ekranie. Dostep do elementow klasy zrealizuj za
+pomoca wskaznikow. Wykorzystaj obiekt nalezacy do tej klasy
+dla ktorego pamiec zostala zaalkowana w sposob dynamiczny.
+W programie wykorzystaj strukture dla pola data produkcji.
